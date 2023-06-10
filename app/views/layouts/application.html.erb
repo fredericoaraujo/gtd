@@ -9,7 +9,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-orange-500" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">GTD</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,42 +38,47 @@
               <a class="nav-link disabled">Disabled</a>
             </li>
           </ul>
-          <div>
-            <ul class="navbar-nav mb-2 mb-lg-0">
+          <div class="dropdown">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= current_user.name %>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                  <li><%= link_to 'Profile', edit_user_registration_path, class: "dropdown-item" %></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li>
+                    <% if user_signed_in? %>
+                      <%= button_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
+                        Sign out <b class="bi bi-arrow-bar-right"></b>
+                      <% end %>
+                    <% end %>
+                  </li>
+                </ul>
               </li>
-              <li class="nav-item">
-                <% if user_signed_in? %>
-                  <%= button_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
-                    Sign out <b class="bi bi-arrow-bar-right"></b>
-                  <% end %>
-                <% end %>
-              </li>
-            </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-10 col-sm-12 bg-indigo-100">
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>
+            <%= yield %>
+          </div>
+          <div class="col-2 bg-pink-100 d-sm-none d-md-block pt-2 pb-2" id="sidebar">
+            <h3>Search</h3>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
           </div>
         </div>
       </div>
-    </nav>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-sm-12 bg-indigo-100">
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-          <%= yield %>
-        </div>
-        <div class="col-2 bg-pink-100 d-sm-none d-md-block pt-2 pb-2" id="sidebar">
-          <h3>Search</h3>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+    </body>
+  </html>
