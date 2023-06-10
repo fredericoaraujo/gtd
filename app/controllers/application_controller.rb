@@ -1,3 +1,9 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+
+  def after_sign_out_path_for(resource_or_scope)
+    # Customize the path or behavior after logout
+    root_path
+  end
+  
 end

@@ -1,0 +1,212 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+/*
+$primary: #6F42C1; // set the $primary variable
+$secondary: #9F3FD9;
+$success: #38C29E;
+$info: #0091D5;
+$warning: #F5C63B;
+$danger: #C26F55;
+$light: $gray-100;
+$dark: $gray-800;
+
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "light": $light,
+    "dark": $dark,
+  );
+
+$theme-colors-rgb: (
+    "primary": to-rgb($primary),
+    "secondary": to-rgb($secondary),
+    "success": to-rgb($success),
+    "info": to-rgb($info),
+    "warning": to-rgb($warning),
+    "danger": to-rgb($danger),
+    "light": to-rgb($light),
+    "dark": to-rgb($dark),
+  );
+
+$table-variants: (
+  "primary":    shift-color($primary, $table-bg-scale),
+  "secondary":  shift-color($secondary, $table-bg-scale),
+  "success":    shift-color($success, $table-bg-scale),
+  "info":       shift-color($info, $table-bg-scale),
+  "warning":    shift-color($warning, $table-bg-scale),
+  "danger":     shift-color($danger, $table-bg-scale),
+  "light":      $light,
+  "dark":       $dark,
+);
+*/
+
+$all-colors: map-merge-multiple(
+  $blues,
+  $indigos,
+  $purples,
+  $pinks,
+  $reds,
+  $oranges,
+  $yellows,
+  $greens,
+  $teals,
+  $cyans
+);
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "color":
+      map-merge(
+        map-get($utilities, "color"),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, "color"), "values"),
+              ($all-colors)
+            ),
+        )
+      ),
+    "background-color":
+      map-merge(
+        map-get($utilities, "background-color"),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, "background-color"), "values"),
+              ($all-colors)
+            ),
+        )
+      ),
+  )
+);
+
+
+
+// merge with existing $theme-colors map
+// $theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "bootstrap/scss/utilities/api";
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+$font-family-base: 'Raleway';
+
+
+.login-logo,
+.register-logo {
+  font-size: 2.1rem;
+  font-weight: 300;
+  margin-bottom: .9rem;
+  text-align: center;
+}
+
+.login-logo a,
+.register-logo a {
+  color: #495057;
+}
+
+.login-page,
+.register-page {
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #e9ecef;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100vh;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+
+.login-box,
+.register-box {
+  width: 640px;
+}
+
+@media (max-width: 576px) {
+  .login-box,
+  .register-box {
+    margin-top: .5rem;
+    width: 90%;
+  }
+}
+
+.login-box .card,
+.register-box .card {
+  margin-bottom: 0;
+}
+
+.login-card-body,
+.register-card-body {
+  background-color: #fff;
+  border-top: 0;
+  color: #666;
+  padding: 20px;
+}
+
+.login-card-body .input-group .form-control,
+.register-card-body .input-group .form-control {
+  border-right: 0;
+}
+
+.login-card-body .input-group .form-control:focus,
+.register-card-body .input-group .form-control:focus {
+  box-shadow: none;
+}
+
+.login-card-body .input-group .form-control:focus ~ .input-group-prepend .input-group-text,
+.login-card-body .input-group .form-control:focus ~ .input-group-append .input-group-text,
+.register-card-body .input-group .form-control:focus ~ .input-group-prepend .input-group-text,
+.register-card-body .input-group .form-control:focus ~ .input-group-append .input-group-text {
+  border-color: #80bdff;
+}
+
+.login-card-body .input-group .form-control.is-valid:focus,
+.register-card-body .input-group .form-control.is-valid:focus {
+  box-shadow: none;
+}
+
+.login-card-body .input-group .form-control.is-valid ~ .input-group-prepend .input-group-text,
+.login-card-body .input-group .form-control.is-valid ~ .input-group-append .input-group-text,
+.register-card-body .input-group .form-control.is-valid ~ .input-group-prepend .input-group-text,
+.register-card-body .input-group .form-control.is-valid ~ .input-group-append .input-group-text {
+  border-color: #28a745;
+}
+
+.login-card-body .input-group .form-control.is-invalid:focus,
+.register-card-body .input-group .form-control.is-invalid:focus {
+  box-shadow: none;
+}
+
+.login-card-body .input-group .form-control.is-invalid ~ .input-group-append .input-group-text,
+.register-card-body .input-group .form-control.is-invalid ~ .input-group-append .input-group-text {
+  border-color: #dc3545;
+}
+
+.login-card-body .input-group .input-group-text,
+.register-card-body .input-group .input-group-text {
+  background-color: transparent;
+  border-bottom-right-radius: 0.25rem;
+  border-left: 0;
+  border-top-right-radius: 0.25rem;
+  color: #777;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.login-box-msg,
+.register-box-msg {
+  margin: 0;
+  padding: 0 20px 20px;
+  text-align: center;
+}
