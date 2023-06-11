@@ -5913,7 +5913,7 @@ $table-variants: (
 }
 
 .sidebar {
-  height: calc(100vh - 56px);
+  min-height: calc(100vh - 56px);
   border-left: 1px solid #dee2e6;
 }
 
