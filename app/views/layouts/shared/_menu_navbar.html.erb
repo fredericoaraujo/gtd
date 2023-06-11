@@ -1,80 +1,83 @@
 <nav class="navbar navbar-expand-lg bg-200" data-bs-theme="light">
-  <%= link_to 'GTD', root_path, class: 'navbar-brand fw-bold' %>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item">
-        <%= link_to root_path, class: 'nav-link' do %>
-          <span class="bi bi-clipboard"></span> Dashboard
-        <% end %>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="bi bi-list-task"></i> Task
-        </a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="bi bi-gear"></i> Settings
-        </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-      </li>
-    </ul>
-    <div class="dropdown">
+  <div class="container-fluid">
+    <%= link_to 'GTD', root_path, class: 'navbar-brand fw-bold' %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item me-4">
-          <a class="btn bg-orange-500 text-white position-relative" id="notification" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-bell"></i>
-            <span class="position-absolute mt-2 start-100 translate-middle badge rounded-pill bg-danger">
-              99+
-              <span class="visually-hidden">unread messages</span>
-            </span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end" aria-labelledby="notification">
-            <span class="dropdown-item dropdown-header text-center fs-6 fw-bold">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="bi bi-envelope me-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="bi bi-people-fill me-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="bi bi-file-earmark me-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer text-center fw-bold fs-6">See All Notifications</a>
-          </div>
+        <li class="nav-item">
+          <%= link_to root_path, class: 'nav-link' do %>
+            <span class="bi bi-clipboard"></span> Dashboard
+          <% end %>
         </li>
         <li class="nav-item">
-          <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= current_user.name %>
+          <a class="nav-link" href="#">
+            <i class="bi bi-list-task"></i> Task
           </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-            <li><%= link_to 'Profile', edit_user_registration_path, class: "dropdown-item" %></li>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-gear"></i> Settings
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li>
-              <% if user_signed_in? %>
-                <%= button_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
-                  Sign out <b class="bi bi-arrow-bar-right"></b>
-                <% end %>
-              <% end %>
-            </li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
+      </ul>
+      <div class="dropdown">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item me-4">
+            <a class="btn bg-orange-300 text-white position-relative" id="notification" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-bell"></i>
+              <span class="position-absolute mt-2 start-100 translate-middle badge rounded-pill bg-danger">
+                99+
+                <span class="visually-hidden">unread messages</span>
+              </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end" aria-labelledby="notification">
+              <span class="dropdown-item dropdown-header text-center fs-6 fw-bold">15 Notifications</span>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="bi bi-envelope me-2"></i> 4 new messages
+                <span class="float-right text-muted text-sm">3 mins</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="bi bi-people-fill me-2"></i> 8 friend requests
+                <span class="float-right text-muted text-sm">12 hours</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="bi bi-file-earmark me-2"></i> 3 new reports
+                <span class="float-right text-muted text-sm">2 days</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item dropdown-footer text-center fw-bold fs-6">See All Notifications</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= current_user.name %>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+              <li><%= link_to 'Profile', edit_user_registration_path, class: "dropdown-item" %></li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <% if user_signed_in? %>
+                  <%= button_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
+                    Sign out <b class="bi bi-arrow-bar-right"></b>
+                  <% end %>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+        </div>
       </div>
     </div>
   </div>
+  <!-- end container-fluid -->
 </nav> <!-- end topbar -->
