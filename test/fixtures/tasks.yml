@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  deadline: 2023-06-12
+  completed: false
+  context: MyText
+  priority: one
+  status: one
+  category: one
+  label: one
+  goal: one
+
+two:
+  title: MyString
+  deadline: 2023-06-12
+  completed: false
+  context: MyText
+  priority: two
+  status: two
+  category: two
+  label: two
+  goal: two
