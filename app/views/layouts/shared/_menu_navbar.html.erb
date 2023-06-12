@@ -12,19 +12,26 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <%= link_to tasks_path, class: 'nav-link' do %>
             <i class="bi bi-list-task"></i> Task
-          </a>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to goals_path, class: 'nav-link' do %>
+            <i class="bi bi-bullseye"></i> Goal
+          <% end %>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-gear"></i> Settings
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li>
+              <%= link_to 'Category', categories_path, class: 'dropdown-item' %>
+            </li>
+            <li>
+              <%= link_to 'Label', labels_path, class: 'dropdown-item' %>
+            </li>
           </ul>
         </li>
       </ul>
@@ -32,7 +39,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item me-4">
             <a class="btn bg-orange-300 text-white position-relative" id="notification" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-bell"></i>
+              <i class="bi bi-inbox"></i>
               <span class="position-absolute mt-2 start-100 translate-middle badge rounded-pill bg-danger">
                 99+
                 <span class="visually-hidden">unread messages</span>
