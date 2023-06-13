@@ -3,7 +3,7 @@ class LabelsController < ApplicationController
 
   # GET /labels or /labels.json
   def index
-    @labels = Label.all
+    @labels = current_user.labels
   end
 
   # GET /labels/1 or /labels/1.json
