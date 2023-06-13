@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_account_update_params, if: :devise_controller?
   layout :layout_by_resource
 
+  @colors = {"1" => "teal", "2" => "orange", "3" => "red"}
+
   def after_sign_out_path_for(resource_or_scope)
     root_path
   end
