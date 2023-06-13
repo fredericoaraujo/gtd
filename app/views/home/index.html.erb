@@ -15,116 +15,38 @@
 <div class="row">
   <div class="col-4 text-center">
     <div class="card bg-pink-300">
-      <div class="card-body">
-        <span class="fs-1 fw-bolder">999</span>
+      <div class="card-header">
+        <span class="fs-1 fw-bolder text-white"><%= @count_high %></span>
       </div>
       <div class="card-footer">
-        <span class="fs-3">High</span>
+        <span class="fs-3 text-white">High</span>
       </div>
     </div>
   </div>
   <div class="col-4 text-center">
     <div class="card bg-orange-300">
-      <div class="card-body">
-        <span class="fs-1 fw-bolder">999</span>
+      <div class="card-header">
+        <span class="fs-1 fw-bolder text-white"><%= @count_medium %></span>
       </div>
       <div class="card-footer">
-        <span class="fs-3">Medium</span>
+        <span class="fs-3 text-white">Medium</span>
       </div>
     </div>
   </div>
   <div class="col-4 text-center">
     <div class="card bg-teal-300">
-      <div class="card-body">
-        <span class="fs-1 fw-bolder">999</span>
+      <div class="card-header">
+        <span class="fs-1 fw-bolder text-white"><%= @count_low %></span>
       </div>
       <div class="card-footer">
-        <span class="fs-3">Low</span>
+        <span class="fs-3 text-white">Low</span>
       </div>
     </div>
   </div>
 </div>
 <hr>
-<div class="row" id="filters">
-  <div class="row">
-    <div class="col-12">
-      <h3 class="fs-3 fw-bolder">Filter: </h3>
-    </div>
-  </div>
-  <div class="row mt-3 mb-3">
-    <div class="col-3">
-      <label for="id_priority" class="form-label fw-bolder">Priority</label>
-      <select class="form-select" id="id_priority" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-    </div>
-    <div class="col-3">
-      <label for="id_category" class="form-label fw-bolder">Category</label>
-      <select class="form-select" id="id_category" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-    </div>
-    <div class="col-3">
-      <label for="id_label" class="form-label fw-bolder">Label</label>
-      <select class="form-select" id="id_label" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-    </div>
-    <div class="col-3">
-      <label for="id_user" class="form-label fw-bolder">User</label>
-      <select class="form-select" id="id_user" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-    </div>
-  </div>
-</div> <!-- end filter -->
-<div class="row" id="results">
-  <div class="row">
-    <div class="col-12">
-      <h3 class="fs-3 fw-bolder">Results</h3>
-    </div>
-  </div>
-  <div class="col-12">
-    <table class="table table-striped table-bordered table-hover table-sm">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div> <!-- end result --->
+<div class="row">
+  <% @tasks.each do |task| %>
+    <%= render task %>
+  <% end %>
+</div>
