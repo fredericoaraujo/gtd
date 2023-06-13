@@ -71,7 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_150531) do
     t.date "deadline"
     t.boolean "completed"
     t.text "context"
-    t.bigint "priority_id", default: 1, null: false
+    t.bigint "priority_id", null: false
     t.bigint "category_id"
     t.bigint "label_id"
     t.bigint "goal_id"
