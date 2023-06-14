@@ -1,47 +1,36 @@
-<div id="<%= dom_id task %>">
-  <p>
-    <strong>Title:</strong>
-    <%= task.title %>
-  </p>
-
-  <p>
-    <strong>Deadline:</strong>
-    <%= task.deadline %>
-  </p>
-
-  <p>
-    <strong>Completed:</strong>
-    <%= task.completed %>
-  </p>
-
-  <p>
-    <strong>Context:</strong>
-    <%= task.context %>
-  </p>
-
-  <p>
-    <strong>Priority:</strong>
-    <%= task.priority_id %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= task.status_id %>
-  </p>
-
-  <p>
-    <strong>Category:</strong>
-    <%= task.category_id %>
-  </p>
-
-  <p>
-    <strong>Label:</strong>
-    <%= task.label_id %>
-  </p>
-
-  <p>
-    <strong>Goal:</strong>
-    <%= task.goal_id %>
-  </p>
-
+<div class="col-3 mb-3">
+  <div class="card" id="<%= dom_id task %>">
+    <div class="card-header <%= @colors ? "bg-#{@colors[task.priority.name.downcase.to_sym]}-300" : '' %> text-white fs-4 fw-bolder">
+      <%= task.title %>
+    </div>
+    <div class="card-body">
+      <div class="info-block">
+        <strong>Deadline:</strong>
+        <%= task.deadline %>
+      </div>
+      <div class="info-block">
+        <strong>Completed:</strong>
+        <%= task.completed %>
+      </div>
+      <div class="info-block">
+        <strong>Context:</strong>
+        <%= task.context %>
+      </div>
+      <div class="info-block">
+        <strong>Priority:</strong>
+        <%= task.priority.name %>
+      </div>
+      <div class="info-block">
+        <strong>Category:</strong>
+        <%= task.category ? task.category.name : '' %>
+      </div>
+      <div class="info-block">
+        <strong>Goal:</strong>
+        <%= task.goal ? task.goal.description : '' %>
+      </div>
+    </div>
+    <div class="card-footer">
+      <%= link_to "Edit this task", edit_task_path(task) %>
+    </div>
+  </div>
 </div>

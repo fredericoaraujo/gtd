@@ -1,4 +1,5 @@
 <%= form_with(model: goal) do |form| %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
   <% if goal.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
@@ -24,11 +25,6 @@
   <div>
     <%= form.label :total, style: "display: block" %>
     <%= form.number_field :total %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
   </div>
 
   <div>

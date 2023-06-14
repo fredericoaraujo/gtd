@@ -3,7 +3,8 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks.order([completed: :asc, created_at: :desc])
+    @colors = { low: "teal", medium: "orange", high: "red" }
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -13,6 +14,10 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    @categories = current_user.categories
+    @labels = current_user.labels
+    @goals = current_user.goals
+    @priorities = Priority.all
   end
 
   # GET /tasks/1/edit
@@ -23,14 +28,11 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
 
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to task_url(@task), notice: "Task was successfully created." }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    if @task.save
+      Group.create(user_id: current_user.id, task_id: @task.id)
+      redirect_to task_url(@task), notice: "Task was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -49,6 +51,8 @@ class TasksController < ApplicationController
 
   # DELETE /tasks/1 or /tasks/1.json
   def destroy
+    group = Group.find_by(user_id: current_user.id, task_id: @task.id)
+    group.destroy if group
     @task.destroy
 
     respond_to do |format|
@@ -61,6 +65,11 @@ class TasksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
+      @categories = current_user.categories
+      @labels = current_user.labels
+      @goals = current_user.goals
+      @priorities = Priority.all
+      @colors = { low: "teal", medium: "orange", high: "red" }
     end
 
     # Only allow a list of trusted parameters through.

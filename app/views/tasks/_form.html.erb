@@ -2,7 +2,6 @@
   <% if task.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
-
       <ul>
         <% task.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,53 +9,37 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="mb-3">
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control' %>
   </div>
-
-  <div>
-    <%= form.label :deadline, style: "display: block" %>
-    <%= form.date_field :deadline %>
+  <div class="mb-3">
+    <%= form.label :context, class: 'form-label' %>
+    <%= form.text_area :context, class: 'form-control' %>
   </div>
-
-  <div>
-    <%= form.label :completed, style: "display: block" %>
-    <%= form.check_box :completed %>
+  <div class="row mb-3">
+    <div class="col-md-3">
+      <%= form.label :deadline, class: 'form-label' %>
+      <%= form.date_field :deadline, class: 'form-control' %>
+    </div>
+    <div class="col-md-3">
+      <%= form.label :priority_id, class: 'form-label' %>
+      <%= form.collection_select :priority_id, @priorities, :id, :name, {prompt: false}, class: 'form-select' %>
+    </div>
+    <div class="col-md-3">
+      <%= form.label :category_id, class: 'form-label' %>
+      <%= form.collection_select :category_id, @categories, :id, :name, {prompt: true}, class: 'form-select' %>
+    </div>
+    <div class="col-md-3">
+      <%= form.label :goal_id, class: 'form-label' %>
+      <%= form.collection_select :goal_id, @goals, :id, :description, {prompt: true}, class: 'form-select' %>
+    </div>
   </div>
-
-  <div>
-    <%= form.label :context, style: "display: block" %>
-    <%= form.text_area :context %>
+  <div class="form-check form-switch mb-3">
+    <%= form.label :completed, class: 'form-check-label' %>
+    <%= form.check_box :completed, class: 'form-check-input' %>
   </div>
-
   <div>
-    <%= form.label :priority_id, style: "display: block" %>
-    <%= form.text_field :priority_id %>
-  </div>
-
-  <div>
-    <%= form.label :status_id, style: "display: block" %>
-    <%= form.text_field :status_id %>
-  </div>
-
-  <div>
-    <%= form.label :category_id, style: "display: block" %>
-    <%= form.text_field :category_id %>
-  </div>
-
-  <div>
-    <%= form.label :label_id, style: "display: block" %>
-    <%= form.text_field :label_id %>
-  </div>
-
-  <div>
-    <%= form.label :goal_id, style: "display: block" %>
-    <%= form.text_field :goal_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-success' %>
   </div>
 <% end %>
